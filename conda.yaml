@@ -2,7 +2,6 @@ name: tutorial
 channels:
 - defaults
 dependencies:
-- python=3.7.3
 - scikit-learn=0.22.1
 - pip
 - pip:
