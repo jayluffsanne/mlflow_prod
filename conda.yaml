@@ -1,11 +1,10 @@
 channels:
 - defaults
-- conda-forge
 dependencies:
-- python=3.8.8
+- python=3.7.3
+- scikit-learn=0.22.1
 - pip
 - pip:
   - mlflow
-  - scikit-learn==0.23.2
-  - cloudpickle==1.6.0
+  - cloudpickle==0.8.0
 name: tutorial
