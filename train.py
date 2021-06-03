@@ -52,7 +52,7 @@ def train_test(df):
   x = df[["RM", "LSTAT"]]
   y = df[["MEDV"]]
   x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 5)
-  return X_train, X_test, y_train, y_test
+  return x_train, x_test, y_train, y_test
 
 # COMMAND ----------
 
