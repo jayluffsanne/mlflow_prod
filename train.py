@@ -27,74 +27,74 @@ import mlflow.sklearn
 
 # COMMAND ----------
 
-def load_data():
-  boston_dataset = load_boston()
-  bdf = pd.DataFrame(boston_dataset['data'],
-                     columns = boston_dataset['feature_names'])
-  bdf["MEDV"] = boston_dataset['target']
-  # Sanity check that it should have 13 features
-  #assert bdf.shape[1] == 14
-  #print("Asserted 13 Features and 1 target variable")
-  #print("printing Head of boston df")
-  #print(bdf.head(10))
-  return bdf
+# def load_data():
+#   boston_dataset = load_boston()
+#   bdf = pd.DataFrame(boston_dataset['data'],
+#                      columns = boston_dataset['feature_names'])
+#   bdf["MEDV"] = boston_dataset['target']
+#   # Sanity check that it should have 13 features
+#   #assert bdf.shape[1] == 14
+#   #print("Asserted 13 Features and 1 target variable")
+#   #print("printing Head of boston df")
+#   #print(bdf.head(10))
+#   return bdf
 
-# COMMAND ----------
+# # COMMAND ----------
 
-# Data Feature selection
-def feature_selection(df):
-  df = df[["RM", "LSTAT", "MEDV"]]
-  return df
+# # Data Feature selection
+# def feature_selection(df):
+#   df = df[["RM", "LSTAT", "MEDV"]]
+#   return df
 
-# COMMAND ----------
+# # COMMAND ----------
 
-def train_test(df):
-  x = df[["RM", "LSTAT"]]
-  y = df[["MEDV"]]
-  x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 5)
-  return x_train, x_test, y_train, y_test
+# def train_test(df):
+#   x = df[["RM", "LSTAT"]]
+#   y = df[["MEDV"]]
+#   x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 5)
+#   return x_train, x_test, y_train, y_test
 
-# COMMAND ----------
+# # COMMAND ----------
 
-def train_model(x_train, y_train):
-  lm = LinearRegression()
-  model = lm.fit(x_train, y_train)
-  return model
+# def train_model(x_train, y_train):
+#   lm = LinearRegression()
+#   model = lm.fit(x_train, y_train)
+#   return model
 
-# COMMAND ----------
+# # COMMAND ----------
 
-# save the model to adls
-# filepath ='/dbfs/mnt/inst_DataScienceProject/MSS/DEV/MSS_Workspace_Backups/linearmodel.pkl'
-def save_model(filepath,model):
-  pickle.dump(model, open(filepath, 'wb'))
+# # save the model to adls
+# # filepath ='/dbfs/mnt/inst_DataScienceProject/MSS/DEV/MSS_Workspace_Backups/linearmodel.pkl'
+# def save_model(filepath,model):
+#   pickle.dump(model, open(filepath, 'wb'))
 
-# COMMAND ----------
+# # COMMAND ----------
 
-def load_model(filepath):
-  loaded_model =    pickle.load(open(filepath, 'rb'))
-  return loaded_model
+# def load_model(filepath):
+#   loaded_model =    pickle.load(open(filepath, 'rb'))
+#   return loaded_model
 
-# COMMAND ----------
+# # COMMAND ----------
 
-def predict(df, model):
-  pred = model.predict(df)
-  return pred
+# def predict(df, model):
+#   pred = model.predict(df)
+#   return pred
 
-# COMMAND ----------
+# # COMMAND ----------
 
-def eval_metrices(actual, pred):
-  rmse = np.sqrt(mean_squared_error(actual, pred))
-  mae = mean_absolute_error(actual, pred)
-  r2 = r2_score(actual, pred)
-  #print("rmse = ", rmse)
-  #print("mae = ", mae)
-  #print("r2 = ", r2)
-  return rmse, mae, r2
+# def eval_metrices(actual, pred):
+#   rmse = np.sqrt(mean_squared_error(actual, pred))
+#   mae = mean_absolute_error(actual, pred)
+#   r2 = r2_score(actual, pred)
+#   #print("rmse = ", rmse)
+#   #print("mae = ", mae)
+#   #print("r2 = ", r2)
+#   return rmse, mae, r2
 
-if __name__ == "__main__":
-    warnings.filterwarnings("ignore")
+# if __name__ == "__main__":
+#     warnings.filterwarnings("ignore")
 
-# COMMAND ----------
+# # COMMAND ----------
 
 # df = load_data()
 # df = feature_selection(df)
