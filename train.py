@@ -88,8 +88,8 @@ df = feature_selection(df)
 
 with mlflow.start_run():
   x_train, x_test, y_train, y_test = train_test(df)
-  model = train_model(X_train, y_train)
-  pred = predict(X_test, model)
+  model = train_model(x_train, y_train)
+  pred = predict(x_test, model)
   (rmse, mae, r2) = eval_metrices(y_test, pred)
   mlflow.log_metric("rmse", rmse)
   mlflow.log_metric("r2", r2)
