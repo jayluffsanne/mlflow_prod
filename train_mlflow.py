@@ -89,6 +89,9 @@ def eval_metrices(actual, pred):
   print("r2 = ", r2)
   return rmse, mae, r2
 
+if __name__ == "__main__":
+    warnings.filterwarnings("ignore")
+
 # COMMAND ----------
 
 df = load_data()
