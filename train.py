@@ -96,8 +96,8 @@ if __name__ == "__main__":
 
 # COMMAND ----------
 
-df = load_data()
-df = feature_selection(df)
+# df = load_data()
+# df = feature_selection(df)
 
 # COMMAND ----------
 
