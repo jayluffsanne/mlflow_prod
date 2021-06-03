@@ -4,7 +4,7 @@ import warnings
 import sys
 import pandas as pd
 import numpy as np
-#from sklearn.datasets import load_boston
+from sklearn.datasets import load_boston
 # import seaborn as sn
 # import matplotlib.pyplot as plt
 #from sklearn.model_selection import train_test_split
