@@ -49,16 +49,16 @@ def feature_selection(df):
 # COMMAND ----------
 
 def train_test(df):
-  X = df[["RM", "LSTAT"]]
+  x = df[["RM", "LSTAT"]]
   y = df[["MEDV"]]
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 5)
+  x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 5)
   return X_train, X_test, y_train, y_test
 
 # COMMAND ----------
 
-def train_model(X_train, y_train):
+def train_model(x_train, y_train):
   lm = LinearRegression()
-  model = lm.fit(X_train, y_train)
+  model = lm.fit(x_train, y_train)
   return model
 
 # COMMAND ----------
@@ -102,7 +102,7 @@ df = feature_selection(df)
 # COMMAND ----------
 
 with mlflow.start_run():
-  X_train, X_test, y_train, y_test = train_test(df)
+  x_train, x_test, y_train, y_test = train_test(df)
   model = train_model(X_train, y_train)
   pred = predict(X_test, model)
   (rmse, mae, r2) = eval_metrices(y_test, pred)
