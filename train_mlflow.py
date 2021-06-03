@@ -1,5 +1,7 @@
 # Databricks notebook source
 import os
+import warnings
+import sys
 import pandas as pd
 import numpy as np
 from sklearn.datasets import load_boston
@@ -108,85 +110,3 @@ with mlflow.start_run():
   mlflow.log_metric("r2", r2)
   mlflow.log_metric("mae", mae)
   mlflow.sklearn.log_model(model, "model")
-  
-
-# COMMAND ----------
-
-# model
-
-# COMMAND ----------
-
-# filepath ='/dbfs/mnt/inst_DataScienceProject/MSS/DEV/MSS_Workspace_Backups/linearmodel_prod.pkl'
-# save_model(filepath,model)
-
-# COMMAND ----------
-
-# pred = predict(X_test, model)
-
-# COMMAND ----------
-
-# pred
-
-# COMMAND ----------
-
-# df = spark.createDataFrame(X_test)
-
-# COMMAND ----------
-
-# # Prediction using pyfunc and mlflow
-# import mlflow
-# logged_model = 'runs:/647c7ca953034f51b74a2db3c1d3381c/model'
-
-# # Load model as a Spark UDF.
-# loaded_model = mlflow.pyfunc.spark_udf(spark, model_uri=logged_model)
-
-# # Predict on a Spark DataFrame.
-# # df.withColumn('predictions', loaded_model()).collect()
-# df1 = df.withColumn('predictions', loaded_model())
-
-# COMMAND ----------
-
-# type(df1)
-
-# COMMAND ----------
-
-# # Using pandas
-# import mlflow
-# logged_model = 'runs:/647c7ca953034f51b74a2db3c1d3381c/model'
-
-# # Load model as a PyFuncModel.
-# loaded_model = mlflow.pyfunc.load_model(logged_model)
-
-# # Predict on a Pandas DataFrame.
-# import pandas as pd
-# loaded_model.predict(pd.DataFrame(X_test))
-
-# COMMAND ----------
-
-# MAGIC %sh 
-# MAGIC databricks fs -h
-
-# COMMAND ----------
-
-# MAGIC %sh ls /loac
-
-# COMMAND ----------
-
-# MAGIC %sh
-# MAGIC databricks fs cp "dbfs:/databricks/mlflow-tracking/2376261929218913/647c7ca953034f51b74a2db3c1d3381c/artifacts/model/" "/local_disk0/tmp/jay/"
-
-# COMMAND ----------
-
-# # Loading model from artifacts
-# lm = mlflow.sklearn.load_model("dbfs:/databricks/mlflow-tracking/2376261929218913/647c7ca953034f51b74a2db3c1d3381c/artifacts/model/")
-
-
-# COMMAND ----------
-
-# lm.predict(X_test)
-
-# COMMAND ----------
-
-# import mlflow
-# p_uri = "dbfs:/databricks/mlflow-tracking/2376261929218913/3b3e5bc8425d4635afe3816d68f2f313/artifacts/model"
-# mlflow.run(p_uri)
