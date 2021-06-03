@@ -15,13 +15,13 @@ import mlflow.sklearn
 
 # COMMAND ----------
 
-import sklearn
-sklearn.__version__
+#import sklearn
+#sklearn.__version__
 
 # COMMAND ----------
 
-import mlflow
-mlflow.__version__
+#import mlflow
+#mlflow.__version__
 
 # COMMAND ----------
 
@@ -31,10 +31,10 @@ def load_data():
                      columns = boston_dataset['feature_names'])
   bdf["MEDV"] = boston_dataset['target']
   # Sanity check that it should have 13 features
-  assert bdf.shape[1] == 14
-  print("Asserted 13 Features and 1 target variable")
-  print("printing Head of boston df")
-  print(bdf.head(10))
+  #assert bdf.shape[1] == 14
+  #print("Asserted 13 Features and 1 target variable")
+  #print("printing Head of boston df")
+  #print(bdf.head(10))
   return bdf
 
 # COMMAND ----------
@@ -84,9 +84,9 @@ def eval_metrices(actual, pred):
   rmse = np.sqrt(mean_squared_error(actual, pred))
   mae = mean_absolute_error(actual, pred)
   r2 = r2_score(actual, pred)
-  print("rmse = ", rmse)
-  print("mae = ", mae)
-  print("r2 = ", r2)
+  #print("rmse = ", rmse)
+  #print("mae = ", mae)
+  #print("r2 = ", r2)
   return rmse, mae, r2
 
 if __name__ == "__main__":
@@ -112,7 +112,7 @@ with mlflow.start_run():
 
 # COMMAND ----------
 
-model
+# model
 
 # COMMAND ----------
 
@@ -121,11 +121,11 @@ model
 
 # COMMAND ----------
 
-pred = predict(X_test, model)
+# pred = predict(X_test, model)
 
 # COMMAND ----------
 
-pred
+# pred
 
 # COMMAND ----------
 
