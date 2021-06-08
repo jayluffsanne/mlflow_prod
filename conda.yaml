@@ -5,6 +5,6 @@ dependencies:
 - scikit-learn=0.22.1
 - pip
 - pip:
-  - mlflow
+  - mlflow == 1.17.0
   - cloudpickle==0.8.0
 name: tutorial
